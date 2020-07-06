@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1811030045258225492}
   - component: {fileID: 1811030045258225491}
   - component: {fileID: 1811030045258225490}
+  - component: {fileID: 1615962628}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -101,6 +102,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1615962628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811030045258225488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f1c5b43d853094f86e9ad9e696df83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wpMan: {fileID: 0}
+  wp: {fileID: 3209022565955936775}
+  sicknessText: {fileID: 1811030045990423043}
 --- !u!1 &1811030045386329583
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ff34ce66d450046aeb74ad1977e696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wpMan: {fileID: 0}
   player: {fileID: 0}
   radius: 3
   question: 1
