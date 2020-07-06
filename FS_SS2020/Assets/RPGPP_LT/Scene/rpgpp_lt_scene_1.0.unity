@@ -5839,11 +5839,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
         type: 3}
-      propertyPath: nextWaypoint
-      value: 
-      objectReference: {fileID: 1113993478}
-    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
-        type: 3}
       propertyPath: wpMan
       value: 
       objectReference: {fileID: 585825091}
@@ -5854,9 +5849,9 @@ PrefabInstance:
       objectReference: {fileID: 606307419}
     - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
         type: 3}
-      propertyPath: question
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: nextWaypoint
+      value: 
+      objectReference: {fileID: 1113993478}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1 &563093046 stripped
@@ -6925,7 +6920,7 @@ MonoBehaviour:
   wpMan: {fileID: 585825091}
   verSpeed: 10
   rotSpeed: 75
-  volume: {fileID: 0}
+  volume: {fileID: 1677570892}
 --- !u!1 &609748514 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1694894201118028, guid: 6dcae7204dd466c4c862bc640ea7c02e,
@@ -7041,6 +7036,11 @@ PrefabInstance:
       propertyPath: nextWaypoint
       value: 
       objectReference: {fileID: 1512592641}
+    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
+        type: 3}
+      propertyPath: question
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1001 &611816188
@@ -9271,6 +9271,11 @@ PrefabInstance:
       propertyPath: nextWaypoint
       value: 
       objectReference: {fileID: 912587556}
+    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
+        type: 3}
+      propertyPath: question
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1001 &808327438
@@ -13368,6 +13373,11 @@ PrefabInstance:
       propertyPath: nextWaypoint
       value: 
       objectReference: {fileID: 1855454329}
+    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
+        type: 3}
+      propertyPath: question
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1001 &1227574120
@@ -14404,6 +14414,11 @@ PrefabInstance:
       propertyPath: nextWaypoint
       value: 
       objectReference: {fileID: 956975059}
+    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
+        type: 3}
+      propertyPath: question
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1001 &1286580673
@@ -21950,6 +21965,11 @@ PrefabInstance:
       propertyPath: nextWaypoint
       value: 
       objectReference: {fileID: 1409936099}
+    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
+        type: 3}
+      propertyPath: question
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1001 &1953252463
@@ -22563,6 +22583,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 606307419}
+    - target: {fileID: 3209022565955936775, guid: 69235631b5c06394cba26263b083e594,
+        type: 3}
+      propertyPath: question
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69235631b5c06394cba26263b083e594, type: 3}
 --- !u!1001 &2054358857
