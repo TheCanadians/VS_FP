@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaypointManager : MonoBehaviour
 {
-    private GameObject currentWaypoint;
+    [SerializeField] private GameObject currentWaypoint;
     private bool questionActivated = false;
 
     public void SetQuestionActivated (bool state)

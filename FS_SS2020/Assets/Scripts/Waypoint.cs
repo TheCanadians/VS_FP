@@ -55,6 +55,7 @@ public class Waypoint : MonoBehaviour
         if (nextWaypoint != null)
         {
             nextWaypoint.gameObject.SetActive(true);
+            wpMan.SetCurrentWaypoint(nextWaypoint.gameObject);
             this.gameObject.SetActive(false);
         }
         else

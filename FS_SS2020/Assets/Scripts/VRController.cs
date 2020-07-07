@@ -103,7 +103,8 @@ public class VRController : MonoBehaviour
             moveTarget.Rotate(0f, rotAmount, 0f);
         else
         {
-            UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("Canvas").GetComponent<UISelection>();
+            UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("CanvasRotationPoint/Canvas").GetComponent<UISelection>();
+
             if (ui != null)
             {
                 ui.SicknessUp();
@@ -115,10 +116,10 @@ public class VRController : MonoBehaviour
     private void Left(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         if (!wpMan.GetQuestionAnswered())
-            transform.Rotate(0f, -rotAmount, 0f);
+            moveTarget.Rotate(0f, -rotAmount, 0f);
         else
         {
-            UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("Canvas").GetComponent<UISelection>();
+            UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("CanvasRotationPoint/Canvas").GetComponent<UISelection>();
             if (ui != null)
             {
                 ui.SicknessDown();
@@ -131,7 +132,7 @@ public class VRController : MonoBehaviour
     {
         if (wpMan.GetQuestionAnswered())
         {
-            UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("Canvas").GetComponent<UISelection>();
+            UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("CanvasRotationPoint/Canvas").GetComponent<UISelection>();
             if (ui != null)
             {
                 ui.Submit();
