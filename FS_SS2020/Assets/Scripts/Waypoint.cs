@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] private WaypointManager wpMan;
-    [SerializeField] private Transform player;
+    private WaypointManager wpMan;
+    private Log log;
+    private Transform player;
 
     [SerializeField] private float radius = 3f;
 
@@ -15,9 +16,15 @@ public class Waypoint : MonoBehaviour
 
     [SerializeField] private Waypoint nextWaypoint = null;
 
+    private int sicknessScore = 100;
+
     // Start is called before the first frame update
     void Start()
     {
+        wpMan = GameObject.Find("Manager").GetComponent<WaypointManager>();
+        log = GameObject.Find("Manager").GetComponent<Log>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
         if (player == null)
         {
             Debug.Log("Player is NULL");
@@ -27,6 +34,8 @@ public class Waypoint : MonoBehaviour
             Debug.Log("Canvas is NULL");
         if (wpMan == null)
             Debug.Log("WaypointManager is NULL");
+        if (log == null)
+            Debug.Log("Log is NULL");
     }
 
     // Update is called once per frame
@@ -52,6 +61,11 @@ public class Waypoint : MonoBehaviour
 
     private void LoadNextWaypoint()
     {
+        if (sicknessScore != 100)
+            log.AddRow(sicknessScore.ToString());
+        else
+            log.AddRow("");
+
         if (nextWaypoint != null)
         {
             nextWaypoint.gameObject.SetActive(true);
@@ -60,6 +74,7 @@ public class Waypoint : MonoBehaviour
         }
         else
         {
+            log.Save();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER
@@ -76,4 +91,9 @@ public class Waypoint : MonoBehaviour
         wpMan.SetQuestionActivated(true);      
     }
 
+    public void ReturnUIValues(bool state, int sickness)
+    {
+        questionAnswered = state;
+        sicknessScore = sickness;
+    }
 }

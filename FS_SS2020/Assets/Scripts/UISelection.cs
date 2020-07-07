@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UISelection : MonoBehaviour
 {
-    [SerializeField] private WaypointManager wpMan;
+    private WaypointManager wpMan;
     [SerializeField] private Waypoint wp;
 
     private int sickness = 5;
@@ -17,6 +17,8 @@ public class UISelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        wpMan = GameObject.Find("Manager").GetComponent<WaypointManager>();
+
         if (sicknessText == null)
             Debug.Log("Sickness Text is NULL");
         if (wpMan == null)
@@ -49,7 +51,7 @@ public class UISelection : MonoBehaviour
     public void Submit()
     {
         wpMan.SetQuestionActivated(false);
-        wp.questionAnswered = true;
+        wp.ReturnUIValues(true, sickness);
     }
 
     private void UIControl()

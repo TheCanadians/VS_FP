@@ -64,16 +64,6 @@ public class VRController : MonoBehaviour
 
     private void CharacterMovement()
     {
-        /*
-        if (rot != 0)
-        {
-            mb.intensity.Override(7f);
-        }
-        else
-        {
-            mb.intensity.Override(0f);
-        }
-        */
         float translation = ver * verSpeed * Time.deltaTime;
 
         moveTarget.position += translation * camera.transform.forward;
@@ -82,19 +72,16 @@ public class VRController : MonoBehaviour
     private void Forward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         ver = 1f;
-        Debug.Log("Up pressed");
     }
 
     private void Backward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         ver = -1f;
-        Debug.Log("Down pressed");
     }
 
     private void StopMoving(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSourc)
     {
         ver = 0f;
-        Debug.Log("Stop Moving");
     }
 
     private void Right(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -110,7 +97,6 @@ public class VRController : MonoBehaviour
                 ui.SicknessUp();
             }
         }
-        Debug.Log("UI Right pressed");
     }
 
     private void Left(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -125,7 +111,6 @@ public class VRController : MonoBehaviour
                 ui.SicknessDown();
             }
         }
-        Debug.Log("UI Left pressed");
     }
 
     private void UISub(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -138,6 +123,5 @@ public class VRController : MonoBehaviour
                 ui.Submit();
             }
         }
-        Debug.Log("UI Submit pressed");
     }
 }
