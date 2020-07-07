@@ -81,6 +81,26 @@
       "name": "/actions/mixedreality/in/ExternalCamera",
       "type": "pose",
       "requirement": "optional"
+    },
+    {
+      "name": "/actions/FS/in/MoveForward",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/FS/in/MoveBackward",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/FS/in/UIControlRight",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/FS/in/UIControlLeft",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/FS/in/UISubmit",
+      "type": "boolean"
     }
   ],
   "action_sets": [
@@ -98,6 +118,10 @@
     },
     {
       "name": "/actions/mixedreality",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/FS",
       "usage": "single"
     }
   ],

@@ -46,6 +46,12 @@ public class UISelection : MonoBehaviour
         sicknessText.text = sickness.ToString();
     }
 
+    public void Submit()
+    {
+        wpMan.SetQuestionActivated(false);
+        wp.questionAnswered = true;
+    }
+
     private void UIControl()
     {
         
@@ -65,8 +71,7 @@ public class UISelection : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            wpMan.SetQuestionActivated(false);
-            wp.questionAnswered = true;
+            Submit();
         }
     }
 }

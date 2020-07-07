@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaypointManager : MonoBehaviour
 {
-
+    private GameObject currentWaypoint;
     private bool questionActivated = false;
 
     public void SetQuestionActivated (bool state)
@@ -15,5 +15,15 @@ public class WaypointManager : MonoBehaviour
     public bool GetQuestionAnswered()
     {
         return questionActivated;
+    }
+
+    public void SetCurrentWaypoint(GameObject waypoint)
+    {
+        currentWaypoint = waypoint;
+    }
+
+    public GameObject GetCurrentWaypoint()
+    {
+        return currentWaypoint;
     }
 }

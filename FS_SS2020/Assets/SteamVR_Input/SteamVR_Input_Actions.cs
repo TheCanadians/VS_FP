@@ -55,6 +55,16 @@ namespace Valve.VR
         
         private static SteamVR_Action_Pose p_mixedreality_ExternalCamera;
         
+        private static SteamVR_Action_Boolean p_fS_MoveForward;
+        
+        private static SteamVR_Action_Boolean p_fS_MoveBackward;
+        
+        private static SteamVR_Action_Boolean p_fS_UIControlRight;
+        
+        private static SteamVR_Action_Boolean p_fS_UIControlLeft;
+        
+        private static SteamVR_Action_Boolean p_fS_UISubmit;
+        
         public static SteamVR_Action_Boolean default_InteractUI
         {
             get
@@ -207,6 +217,46 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean fS_MoveForward
+        {
+            get
+            {
+                return SteamVR_Actions.p_fS_MoveForward.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean fS_MoveBackward
+        {
+            get
+            {
+                return SteamVR_Actions.p_fS_MoveBackward.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean fS_UIControlRight
+        {
+            get
+            {
+                return SteamVR_Actions.p_fS_UIControlRight.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean fS_UIControlLeft
+        {
+            get
+            {
+                return SteamVR_Actions.p_fS_UIControlLeft.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean fS_UISubmit
+        {
+            get
+            {
+                return SteamVR_Actions.p_fS_UISubmit.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
@@ -228,7 +278,12 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.fS_MoveForward,
+                    SteamVR_Actions.fS_MoveBackward,
+                    SteamVR_Actions.fS_UIControlRight,
+                    SteamVR_Actions.fS_UIControlLeft,
+                    SteamVR_Actions.fS_UISubmit};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -247,7 +302,12 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.fS_MoveForward,
+                    SteamVR_Actions.fS_MoveBackward,
+                    SteamVR_Actions.fS_UIControlRight,
+                    SteamVR_Actions.fS_UIControlLeft,
+                    SteamVR_Actions.fS_UISubmit};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
                     SteamVR_Actions.default_Haptic};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
@@ -265,7 +325,12 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.fS_MoveForward,
+                    SteamVR_Actions.fS_MoveBackward,
+                    SteamVR_Actions.fS_UIControlRight,
+                    SteamVR_Actions.fS_UIControlLeft,
+                    SteamVR_Actions.fS_UISubmit};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.buggy_Throttle};
@@ -290,7 +355,12 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Steering,
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.fS_MoveForward,
+                    SteamVR_Actions.fS_MoveBackward,
+                    SteamVR_Actions.fS_UIControlRight,
+                    SteamVR_Actions.fS_UIControlLeft,
+                    SteamVR_Actions.fS_UISubmit};
         }
         
         private static void PreInitActions()
@@ -314,6 +384,11 @@ namespace Valve.VR
             SteamVR_Actions.p_buggy_Brake = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Brake")));
             SteamVR_Actions.p_buggy_Reset = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Reset")));
             SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
+            SteamVR_Actions.p_fS_MoveForward = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/FS/in/MoveForward")));
+            SteamVR_Actions.p_fS_MoveBackward = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/FS/in/MoveBackward")));
+            SteamVR_Actions.p_fS_UIControlRight = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/FS/in/UIControlRight")));
+            SteamVR_Actions.p_fS_UIControlLeft = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/FS/in/UIControlLeft")));
+            SteamVR_Actions.p_fS_UISubmit = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/FS/in/UISubmit")));
         }
     }
 }
