@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaypointManager : MonoBehaviour
 {
+    [SerializeField] private Log log;
+
     [SerializeField] private GameObject currentWaypoint;
     private bool questionActivated = false;
 
@@ -25,5 +27,17 @@ public class WaypointManager : MonoBehaviour
     public GameObject GetCurrentWaypoint()
     {
         return currentWaypoint;
+    }
+
+    public void Quit()
+    {
+        log.Save();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+#else
+         Application.Quit();
+#endif
     }
 }

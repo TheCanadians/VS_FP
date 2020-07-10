@@ -56,5 +56,21 @@ namespace Valve.VR
                 return SteamVR_Actions.fS_UISubmit;
             }
         }
+        
+        public virtual SteamVR_Action_Boolean TriggerSubmit
+        {
+            get
+            {
+                return SteamVR_Actions.fS_TriggerSubmit;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Exit
+        {
+            get
+            {
+                return SteamVR_Actions.fS_Exit;
+            }
+        }
     }
 }

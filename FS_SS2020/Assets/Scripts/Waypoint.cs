@@ -61,7 +61,12 @@ public class Waypoint : MonoBehaviour
 
     private void LoadNextWaypoint()
     {
-        if (sicknessScore != 100)
+        if (sicknessScore == 10)
+        {
+            log.AddRow(sicknessScore.ToString());
+            wpMan.Quit();
+        }
+        else if (sicknessScore != 100)
             log.AddRow(sicknessScore.ToString());
         else
             log.AddRow("");
@@ -74,14 +79,7 @@ public class Waypoint : MonoBehaviour
         }
         else
         {
-            log.Save();
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-         Application.OpenURL(webplayerQuitURL);
-#else
-         Application.Quit();
-#endif
+            wpMan.Quit();
         }
     }
 

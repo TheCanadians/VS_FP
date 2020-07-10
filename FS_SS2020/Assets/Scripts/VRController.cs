@@ -15,6 +15,8 @@ public class VRController : MonoBehaviour
     [SerializeField] private SteamVR_Action_Boolean UIControlRight;
     [SerializeField] private SteamVR_Action_Boolean UIControlLeft;
     [SerializeField] private SteamVR_Action_Boolean UISubmit;
+    [SerializeField] private SteamVR_Action_Boolean triggerSubmit;
+    [SerializeField] private SteamVR_Action_Boolean exit;
 
     [SerializeField] private WaypointManager wpMan;
 
@@ -25,6 +27,8 @@ public class VRController : MonoBehaviour
 
     [SerializeField] private Volume volume;
     private MotionBlur mb;
+    [SerializeField] private float motionBlurStep = 0.25f;
+    [SerializeField] private float motionBlurMinSpeedStep = 1f;
 
     private float ver = 0f;
 
@@ -38,6 +42,8 @@ public class VRController : MonoBehaviour
         UIControlRight.AddOnStateDownListener(Right, handType);
         UIControlLeft.AddOnStateDownListener(Left, handType);
         UISubmit.AddOnStateDownListener(UISub, handType);
+        triggerSubmit.AddOnStateDownListener(UISub, handType);
+        exit.AddOnStateDownListener(Exit, handType);
 
         if (wpMan == null)
             Debug.Log("WaypointManager is NULL");
@@ -59,6 +65,26 @@ public class VRController : MonoBehaviour
         if (!wpMan.GetQuestionAnswered())
         {
             CharacterMovement();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            mb.intensity.Override(mb.intensity.value - motionBlurStep);
+            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            mb.intensity.Override(mb.intensity.value + motionBlurStep);
+            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            mb.minimumVelocity.Override(mb.minimumVelocity.value + motionBlurMinSpeedStep);
+            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            mb.minimumVelocity.Override(mb.minimumVelocity.value - motionBlurMinSpeedStep);
+            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
         }
     }
 
@@ -123,5 +149,10 @@ public class VRController : MonoBehaviour
                 ui.Submit();
             }
         }
+    }
+
+    private void Exit(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        wpMan.Quit();
     }
 }

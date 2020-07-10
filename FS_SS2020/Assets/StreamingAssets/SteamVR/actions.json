@@ -101,6 +101,14 @@
     {
       "name": "/actions/FS/in/UISubmit",
       "type": "boolean"
+    },
+    {
+      "name": "/actions/FS/in/TriggerSubmit",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/FS/in/Exit",
+      "type": "boolean"
     }
   ],
   "action_sets": [
