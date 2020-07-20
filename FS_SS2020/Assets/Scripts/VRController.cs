@@ -31,6 +31,7 @@ public class VRController : MonoBehaviour
     [SerializeField] private float motionBlurMinSpeedStep = 1f;
 
     private float ver = 0f;
+    private float hor = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,9 @@ public class VRController : MonoBehaviour
         moveBackward.AddOnStateDownListener(Backward, handType);
         moveBackward.AddOnStateUpListener(StopMoving, handType);
         UIControlRight.AddOnStateDownListener(Right, handType);
+        UIControlRight.AddOnStateUpListener(StopRotating, handType);
         UIControlLeft.AddOnStateDownListener(Left, handType);
+        UIControlLeft.AddOnStateUpListener(StopRotating, handType);
         UISubmit.AddOnStateDownListener(UISub, handType);
         triggerSubmit.AddOnStateDownListener(UISub, handType);
         exit.AddOnStateDownListener(Exit, handType);
@@ -57,6 +60,11 @@ public class VRController : MonoBehaviour
                 mb = tempMB;
             }
         }
+
+        if (!wpMan.GetMotionBlur())
+        {
+            mb.intensity.Override(0f);
+        }
     }
 
     // Update is called once per frame
@@ -66,25 +74,30 @@ public class VRController : MonoBehaviour
         {
             CharacterMovement();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+
+        if (wpMan.GetMotionBlur())
         {
-            mb.intensity.Override(mb.intensity.value - motionBlurStep);
-            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            mb.intensity.Override(mb.intensity.value + motionBlurStep);
-            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            mb.minimumVelocity.Override(mb.minimumVelocity.value + motionBlurMinSpeedStep);
-            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            mb.minimumVelocity.Override(mb.minimumVelocity.value - motionBlurMinSpeedStep);
-            Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                mb.intensity.Override(mb.intensity.value - motionBlurStep);
+                Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                mb.intensity.Override(mb.intensity.value + motionBlurStep);
+                Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                mb.minimumVelocity.Override(mb.minimumVelocity.value + motionBlurMinSpeedStep);
+                Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                mb.minimumVelocity.Override(mb.minimumVelocity.value - motionBlurMinSpeedStep);
+                Debug.Log("Intensitiy:  " + mb.intensity.value + "  Minimum Velocity:  " + mb.minimumVelocity.value);
+            }
         }
     }
 
@@ -93,6 +106,7 @@ public class VRController : MonoBehaviour
         float translation = ver * verSpeed * Time.deltaTime;
 
         moveTarget.position += translation * camera.transform.forward;
+        moveTarget.Rotate(0f, hor * rotAmount * Time.deltaTime, 0f);
     }
 
     private void Forward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -110,10 +124,18 @@ public class VRController : MonoBehaviour
         ver = 0f;
     }
 
+    private void StopRotating(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSourc)
+    {
+        hor = 0f;
+    }
+
     private void Right(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         if (!wpMan.GetQuestionAnswered())
-            moveTarget.Rotate(0f, rotAmount, 0f);
+        {
+            //moveTarget.Rotate(0f, rotAmount, 0f);
+            hor = 1f;
+        }
         else
         {
             UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("CanvasRotationPoint/Canvas").GetComponent<UISelection>();
@@ -128,7 +150,10 @@ public class VRController : MonoBehaviour
     private void Left(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         if (!wpMan.GetQuestionAnswered())
-            moveTarget.Rotate(0f, -rotAmount, 0f);
+        {
+            //moveTarget.Rotate(0f, -rotAmount, 0f);
+            hor = -1f;
+        }
         else
         {
             UISelection ui = wpMan.GetCurrentWaypoint().transform.Find("CanvasRotationPoint/Canvas").GetComponent<UISelection>();

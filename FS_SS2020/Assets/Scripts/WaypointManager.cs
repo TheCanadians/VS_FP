@@ -9,6 +9,8 @@ public class WaypointManager : MonoBehaviour
     [SerializeField] private GameObject currentWaypoint;
     private bool questionActivated = false;
 
+    [SerializeField] private bool motionBlur = false;
+
     public void SetQuestionActivated (bool state)
     {
         questionActivated = state;
@@ -27,6 +29,11 @@ public class WaypointManager : MonoBehaviour
     public GameObject GetCurrentWaypoint()
     {
         return currentWaypoint;
+    }
+
+    public bool GetMotionBlur()
+    {
+        return motionBlur;
     }
 
     public void Quit()

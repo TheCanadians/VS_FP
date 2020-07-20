@@ -6253,6 +6253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   log: {fileID: 585825093}
   currentWaypoint: {fileID: 717306831}
+  motionBlur: 0
 --- !u!4 &585825092
 Transform:
   m_ObjectHideFlags: 0
@@ -6280,7 +6281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 
-  fileName: Test3
+  fileName: Studie_1
 --- !u!1001 &587903383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13771,8 +13772,8 @@ MonoBehaviour:
   wpMan: {fileID: 585825091}
   moveTarget: {fileID: 1184909173}
   camera: {fileID: 61040713}
-  verSpeed: 10
-  rotAmount: 15
+  verSpeed: 12
+  rotAmount: 40
   volume: {fileID: 1677570892}
   motionBlurStep: 0.5
   motionBlurMinSpeedStep: 10

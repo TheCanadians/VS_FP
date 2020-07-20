@@ -67,10 +67,10 @@ public class Log : MonoBehaviour
 
     private string GetPath()
     {
-        if (path == null)
+        if (path == "")
         {
 #if UNITY_EDITOR
-            return Application.dataPath + "/Assets/CSV/" + fileName + ".csv";
+            return Application.dataPath + "/CSV/" + fileName + ".csv";
 #else
         return Application.dataPath + "/" + fileName + ".csv";
 #endif
